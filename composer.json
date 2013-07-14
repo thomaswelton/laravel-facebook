@@ -1,0 +1,25 @@
+{
+    "name": "thomaswelton/laravel-facebook",
+    "description": "",
+    "authors": [
+        {
+            "name": "Thomas Welton",
+            "email": "ThomasWelton@me.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x",
+        "thomaswelton/facebook-php-sdk": "3.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "ThomasWelton\\Facebook": "src/",
+            "Facebook\\php": "vendor/facebook/php-sdk/src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
