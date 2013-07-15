@@ -3,8 +3,8 @@
     "description": "",
     "authors": [
         {
-            "name": "Thomas Welton",
-            "email": "ThomasWelton@me.com"
+            "name": "ThomasWelton",
+            "email": "thomaswelton@me.com"
         }
     ],
     "require": {
@@ -17,7 +17,7 @@
             "src/migrations"
         ],
         "psr-0": {
-            "ThomasWelton\\Facebook": "src/",
+            "Thomaswelton\\LaravelFacebook": "src/",
             "Facebook\\php": "vendor/facebook/php-sdk/src/"
         }
     },

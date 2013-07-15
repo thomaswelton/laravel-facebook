@@ -1,4 +1,4 @@
-<?php namespace ThomasWelton\Facebook;
+<?php namespace Thomaswelton\LaravelFacebook;
 
 use Config;
 use Session;
@@ -7,10 +7,10 @@ class Facebook extends \Facebook\Facebook{
 
 	function __construct(){
 		$config = array(
-			'appId' => Config::get('facebook::appId'),
-			'secret' => Config::get('facebook::secret')
+			'appId' => Config::get('laravel-facebook::appId'),
+			'secret' => Config::get('laravel-facebook::secret')
 		);
-
+		
 		parent::__construct($config);
 	}
 

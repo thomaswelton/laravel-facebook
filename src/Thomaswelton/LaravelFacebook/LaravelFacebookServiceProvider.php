@@ -1,8 +1,8 @@
-<?php namespace ThomasWelton\Facebook;
+<?php namespace Thomaswelton\LaravelFacebook;
 
 use Illuminate\Support\ServiceProvider;
 
-class FacebookServiceProvider extends ServiceProvider {
+class LaravelFacebookServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -18,7 +18,7 @@ class FacebookServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('ThomasWelton/facebook');
+		$this->package('thomaswelton/laravel-facebook');
 
 		include __DIR__.'/../../routes.php';
 	}
@@ -43,7 +43,7 @@ class FacebookServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array('facebook');
+		return array();
 	}
 
 }

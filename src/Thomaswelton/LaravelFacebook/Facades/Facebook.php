@@ -1,4 +1,4 @@
-<?php namespace ThomasWelton\Facebook\Facades;
+<?php namespace Thomaswelton\LaravelFacebook\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
