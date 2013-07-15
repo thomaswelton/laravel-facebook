@@ -12,13 +12,13 @@ Update your `composer.json` file to include this package as a dependency
 
 Register the Facebook service provider by adding it to the providers array in the `app/config/app.php` file. 
 ```
-ThomasWelton\Facebook\FacebookServiceProvider
+Thomaswelton\LaravelFacebook\LaravelFacebookServiceProvider
 ```
 
 Alias the Facebook facade by adding it to the aliases array in the `app/config/app.php` file. 
 ```php
 'aliases' => array(
-	'Facebook' => 'ThomasWelton\Facebook\Facades\Facebook'
+	'Facebook' => 'Thomaswelton\LaravelFacebook\Facades\Facebook'
 )
 ```
 
