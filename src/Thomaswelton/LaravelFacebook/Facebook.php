@@ -69,7 +69,7 @@ class Facebook extends \Facebook\Facebook{
 	public function getShareUrl($data = array()){
         $appId = $this->getAppId();
 
-        if($appId && false){
+        if($appId){
             $shareUrl = new Url('https://www.facebook.com/dialog/feed');
 
             $defaults = array(  'app_id' => $this->getAppId(),
