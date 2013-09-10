@@ -48,11 +48,11 @@ class Facebook extends \Facebook\Facebook{
 	}
 
 	public function getNamespace(){
-		return Config::get('facebook::namespace');
+		return Config::get('laravel-facebook::namespace');
 	}
 
 	public function getPageId(){
-		return Config::get('facebook::pageId');
+		return Config::get('laravel-facebook::pageId');
 	}
 
 	public function getTabAppUrl(){
