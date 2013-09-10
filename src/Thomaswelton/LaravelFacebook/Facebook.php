@@ -10,7 +10,7 @@ class Facebook extends \Facebook\Facebook{
 			'appId' => Config::get('laravel-facebook::appId'),
 			'secret' => Config::get('laravel-facebook::secret')
 		);
-		
+
 		parent::__construct($config);
 	}
 
@@ -24,7 +24,7 @@ class Facebook extends \Facebook\Facebook{
 			return $signedRequest;
 
 		}else if($useSession){
-			
+
 			return Session::get('signed_request');
 
 		}
@@ -36,7 +36,7 @@ class Facebook extends \Facebook\Facebook{
 	 */
 	public function hasLiked(){
 		$signedRequest = $this->getSignedRequest();
-		
+
 		if(!is_array($signedRequest) || !array_key_exists('page', $signedRequest)){
 			// We dont know
 			return -1;
@@ -60,7 +60,7 @@ class Facebook extends \Facebook\Facebook{
 		if($pageId){
 			$appId = $this->getAppId();
 			return "http://www.facebook.com/pages/null/{$pageId}?sk=app_{$appId}";
-		
+
 		}
 		return null;
 	}
@@ -68,7 +68,7 @@ class Facebook extends \Facebook\Facebook{
 	public function getShareUrl($data = array()){
 		$shareUrl = 'https://www.facebook.com/dialog/feed';
 
-		$defaults = array(	'app_id' => $this->getAppId(), 
+		$defaults = array(	'app_id' => $this->getAppId(),
 							'redirect_uri' => url());
 
 		$shareParams = array_merge($defaults, $data);
