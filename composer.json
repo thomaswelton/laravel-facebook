@@ -10,7 +10,8 @@
     "require": {
         "php": ">=5.3.0",
         "illuminate/support": "4.0.x",
-        "thomaswelton/facebook-php-sdk": "3.2.*"
+        "thomaswelton/facebook-php-sdk": "3.2.*",
+        "jwage/purl": "0.0.*"
     },
     "autoload": {
         "classmap": [

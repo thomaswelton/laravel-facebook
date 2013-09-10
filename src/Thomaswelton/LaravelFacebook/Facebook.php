@@ -2,6 +2,7 @@
 
 use Config;
 use Session;
+use \Purl\Url;
 
 class Facebook extends \Facebook\Facebook{
 
@@ -66,13 +67,50 @@ class Facebook extends \Facebook\Facebook{
 	}
 
 	public function getShareUrl($data = array()){
-		$shareUrl = 'https://www.facebook.com/dialog/feed';
+        $appId = $this->getAppId();
 
-		$defaults = array(	'app_id' => $this->getAppId(),
-							'redirect_uri' => url());
+        if($appId && false){
+            $shareUrl = new Url('https://www.facebook.com/dialog/feed');
 
-		$shareParams = array_merge($defaults, $data);
-		return $shareUrl . '?' . str_replace('+', '%20', http_build_query($shareParams));
+            $defaults = array(  'app_id' => $this->getAppId(),
+                                'redirect_uri' => url());
+
+            $shareParams = array_merge($defaults, $data);
+        }else{
+            // http://stackoverflow.com/questions/12547088/how-do-i-customize-facebooks-sharer-php
+
+            // Map the new og key names to the old sharer format
+            $sharerData = array();
+            foreach ($data as $key => $value) {
+                switch ($key) {
+                    case 'link':
+                        $sharerData['url'] = $value;
+                        break;
+
+                    case 'name':
+                        $sharerData['title'] = $value;
+                        break;
+
+                    case 'description':
+                        $sharerData['summary'] = $value;
+                        break;
+
+                    case 'picture':
+                        $sharerData['images'][] = $value;
+                        break;
+
+                    default:
+                        $sharerData[$key] = $value;
+                        break;
+                }
+            }
+
+            $shareUrl = new Url('https://www.facebook.com/sharer/sharer.php');
+            $shareParams = array('s' => 100, 'p' => $sharerData);
+        }
+
+		$shareUrl->query->setData($shareParams);
+        return $shareUrl;
 	}
 
 	public function getCanvasUrl($path = ''){
