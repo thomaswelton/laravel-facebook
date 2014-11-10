@@ -11,6 +11,10 @@ class Facebook extends \Facebook\Facebook{
 			'appId' => Config::get('laravel-facebook::appId'),
 			'secret' => Config::get('laravel-facebook::secret')
 		);
+		
+		if (Config::has('laravel-facebook::proxy')) {
+			$this->setProxy(Config::get('laravel-facebook::proxy'), Config::get('laravel-facebook::proxy_auth', null));
+		}
 
 		parent::__construct($config);
 	}
@@ -30,7 +34,19 @@ class Facebook extends \Facebook\Facebook{
 
 		}
 	}
+	
+	/**
+	 * Sets the proxy
+	 * $proxy = 'host:port';
+	 */
+	public function setProxy($proxy, $auth = null) {
+		self::$CURL_OPTS[CURLOPT_PROXY] = $proxy;
 
+		if ($auth !== null) {
+			self::$CURL_OPTS[CURLOPT_PROXYUSERPWD] = $auth['user'] . ':' . $auth['pass'];
+		}
+	}
+	
 	/**
 	 * Checks to see if the user has "liked" the page by checking a signed request
 	 * @return int -1 don't know, 0 doesn't like, 1 liked
